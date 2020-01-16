@@ -74,5 +74,61 @@ class BinaryTreeNode {
     return 'item not found'
   }
 
+  //   remove(value) {
+//     if (value === this.root.value) {
+//       let right = this.root.right
+//       let left = this.root.left
+//       let current = this.root.right
+//       let min = 100000000
+//       while (current !== null) {
+//         // console.log('current')
+//         // console.log(current)
+//         if (min > current.value) {
+//           min = current
+//         }
+//         if (current.left) {
+//           current = current.left
+//         }
+//         else {
+//           current = current.right
+//         }
+//       }
+//       // console.log('min')
+//       // console.log(min)
+//       this.root = min
+//       this.root.left = left
+//       this.root.right = right
+//       console.log('new root after removing')
+//       console.log(this.root)
+//       return this.root
+//     }
+//     else {
+
+//     }
+//   }
+
+//   traverse(root) {
+
+//     if (this.root) {
+
+//       if (this.root.left) {
+//         return this.traverse(this.root.left)
+//       }
+//       else {
+//         return
+//       }
+//       if (this.root.right) {
+//         return this.traverse(this.root.right)
+//       }
+//       else {
+//         return
+//       }
+//       // return this.root.value
+//     }
+//     // if(!this.root){
+
+//     // }
+//   }
+
 
 }
