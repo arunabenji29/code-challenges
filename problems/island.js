@@ -1,3 +1,83 @@
+function numIslands(grid) {
+    let result = [];
+    
+    for(let x=0;x<grid.length;x++){
+        for(let y=0;y<grid[0].length;y++){
+            if(grid[x][y]===0){
+                continue;
+            }
+            else{
+                let lengtha = traverse_island(x,y,grid);
+                console.log(`lengtha: ${lengtha}`)
+                result.push(lengtha)
+                console.log(`result: ${result}`)
+            }
+        }
+    }
+    console.log('result: ',result)
+    return result.length
+    
+};
+
+function traverse_island(x,y,grid){
+    let river_size = 0
+    let queue = [[x,y]]
+    
+    
+    while(queue.length>0){
+        let current_node = queue.pop()
+        console.log('current node: ', current_node)
+        let a = current_node[0]
+        let b = current_node[1]
+        
+        if(grid[a][b] === 0){
+            continue;
+        }
+        
+        let unvisited_valid_nodes = check_neighbors(a,b,grid)
+        
+        
+        console.log('unvisited valid nodes: ', unvisited_valid_nodes)
+        
+        for (let n in unvisited_valid_nodes){
+          console.log('n: ',unvisited_valid_nodes[n])
+            queue.push(unvisited_valid_nodes[n])
+        }
+
+        
+        grid[a][b] = 0
+        console.log('grid: ', grid)
+        river_size += 1
+        
+        
+        
+    }
+    console.log(`river size: ${river_size}`)
+    return river_size
+}
+
+function check_neighbors(x,y,grid){
+    let neighbors_found = []
+    // console.log('x: ', x,' y: ', y )
+    
+    if(x<grid.length-1 && grid[x+1][y] == 1){
+        console.log('check neighbors: grid[x+1][y] - ',grid[x+1][y])
+        neighbors_found.push([x+1,y])
+    }
+    if(y<grid[0].length-1 && grid[x][y+1]== 1){
+        console.log('check neighbors: grid[x][y+1] - ',grid[x][y+1])
+        neighbors_found.push([x,y+1])
+    }
+    if(x>0 && grid[x-1][y]==1){
+      neighbors_found.push([x-1,y])
+    }
+    if(y >0 && grid[x][y-1]==1){
+      neighbors_found.push([x,y-1])
+    }
+    console.log('neighbors found: ', neighbors_found)
+    return neighbors_found
+}
+
 // def river_sizes(map):
 //   # iterate through each row and check to see if its a 0 or 1 and see if it's related
 //   # to a position in the next row 
